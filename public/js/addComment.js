@@ -1,18 +1,17 @@
 const addReview = async (event) => {
     event.preventDefault();
   
-    const text = document.getElementById("review-text").value.trim();
-  
-    const book_id = window.location.toString().split('/')[
+    const content = document.getElementById("comment-text").value.trim();
+    const blog_id = window.location.toString().split('/')[
       window.location.toString().split('/').length - 1
     ];
   
     if (text) {
-        const response = await fetch('/api/review', {
+        const response = await fetch('/api/comment', {
           method: 'POST',
           body: JSON.stringify({
-            text,
-            book_id
+            content,
+            blog_id
           }),
           headers: {
             'Content-Type': 'application/json'
@@ -27,4 +26,4 @@ const addReview = async (event) => {
       }
   }
   
-  document.querySelector('.review-form').addEventListener('submit', addReview);
+  document.querySelector('.comment-form').addEventListener('submit', addReview);

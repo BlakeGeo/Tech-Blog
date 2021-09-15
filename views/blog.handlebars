@@ -1,39 +1,51 @@
-<div class="book mt-4">
-    <h2 class="fas fa-book">{{book_name}}</h2>
-    <h5 class="">{{author.author_name}}</h5>
-    <img class='singleCover' src="{{cover_url}}" alt="{{book_name}}">
+<div class="blog mt-4">
+    <h2 class="fas fa-code-branch">{{title}}</h2>
+    <h5>{{content}}</h5>
+    <p class="text-center">Posted by {{user.username}}</p>
 </div>
-<div class="mt-2">
-        <h2 class="text-center p-2 font-weight-bold">Reviews</h2>
-    {{!-- {{#if reviews.text.length}} --}}
-        <div class="reviews">
-            {{#each reviews as |review|}}
-            <p class="text-center font-size-large">{{review.text}}</p>
-            <h3 class="text-left font-weight-bold">{{user.name}}</h3> 
-            {{/each}}
-        </div>
-    {{!-- {{/if}} --}}
 
-<div class="row justify-content-center mb-3">
-    <div class="review-form card col-md-6">
-      <form class="">
-        <div class="">
-          <textarea id="review-text" class="comment-body" name="comment-body" placeholder="Add your review here"></textarea>
-            </div>
-            <div class="row justify-content-center review-area">
-          <button type="submit" id="addReview" class="btn btn-secondary mb-2">Add Review</button>
+{{#if is_current_logged_in_user_author}}
+<div class="col-md-12">
+  <form class="form edit-form">
+    <div class="form-group"></div>
+    <label for="blog-title">Update blog title:</label>
+    <input class="form-input comment-text" type="text" id="blog-title" name="blog-title" value="{{title}}" />
+    <div class="form-group"></div>
+    <label for="blog-content">Update blog content:</label>
+    <textarea class="form-input comment-text updateContent" type="text" id="blog-content"
+      name="blog-content">{{content}}</textarea>
+    <div class="form-group">
+      <button id="editbutton" type="submit" class="btn btn-primary">Edit post</button>
+    </div>
+    <div class="form-group">
+      <button id="deletebutton" type="submit" class="btn btn-primary">Delete</button>
+    </div>
+</div>
+</form>
+<script src="/js/editpost.js"></script>
+{{/if}}
+
+<div class="mt-2">
+  <h2 class="text-center p-2 font-weight-bold">Comments</h2>
+  <div class="comments">
+    {{#each comments as |comment|}}
+    <p class="text-center font-size-large">{{comment.content}}</p>
+    <h3 class="text-left font-weight-bold">{{user.username}} on {{format_date comment.created_date}}</h3> 
+    {{/each}}
+  </div>
+
+  <div class="row justify-content-center mb-3">
+    <div class="comment-form card col-md-6">
+      <form>
+        <div>
+          <textarea id="comment-text" class="comment-body" name="comment-body" placeholder="Add your comment here"></textarea>
+        </div>
+        <div class="row justify-content-center comment-area">
+          <button type="submit" id="addComment" class="btn btn-secondary mb-2">Add Comment</button>
         </div>
       </form>
     </div>
+  </div>
 </div>
-</div>
 
-<script src="../js/addReview.js"></script>
-
-
-
-{{!-- 
-Blog displays the specific blog (get by PK), form to update blog if user is the author and logged in.
-show all comments
-Comment form if the user is logged in.
- --}}
+<script src="../js/addComment.js"></script>
