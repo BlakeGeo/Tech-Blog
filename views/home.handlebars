@@ -1,7 +1,23 @@
-<div class="p-3">
+<div class="p-3 row">
     <div class="text-center mb-5">
-        <h2 class="font-weight-bold">Welcome to the Book Inventory</h2>
-        <p>This web page stores all user uploaded books as well as any user reviews that have been made.<br>
-        Login or sign up to gain access to the full book library and the ability to upload and review books yourself!</p>
+        <h2 class="font-weight-bold">Blogs</h2>
     </div>
+</div>
+<div class="row mt-4">
+  {{#if blogs.length}}
+  <div class="col-md-6 project-list">
+    {{#each blogs as |blog|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h3><a href="/blog/{{blog.id}}">{{blog.title}}</a></h3>
+        <p>Posted on:{{format_date blog.created_date}} by {{user.username}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{else}}
+  <div>
+    <h2>No blogs yet!</h2>
+  </div>
+  {{/if}}
 </div>

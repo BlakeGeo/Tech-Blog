@@ -1,6 +1,8 @@
-body {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    background-color: rgb(195, 201, 226);
+:root {
+	--cream: #eeeedd;
+	--red: #ff2255;
+	--dark: #444444;
+	--lightgrey: #5e5e5e;
 }
 
 * {
@@ -9,6 +11,14 @@ body {
     margin: 0;
     padding: 0;
 }
+
+body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: var(--dark);
+    font-size: 1.4rem;
+    color: black;
+}
+
 a {
     text-decoration: none;
     color: black;
