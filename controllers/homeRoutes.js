@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
-    res.render('homepage', {
+    res.render('home', {
       blogs,
       logged_in: req.session.logged_in,
     });
@@ -53,7 +53,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
       include: [
         {
           model: Blog,
-          include: [User]
+          attributes: ['title', 'id'],
         }
       ],
     });

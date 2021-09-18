@@ -1,4 +1,4 @@
-const addReview = async (event) => {
+const addComment = async (event) => {
     event.preventDefault();
   
     const content = document.getElementById("comment-text").value.trim();
@@ -6,7 +6,7 @@ const addReview = async (event) => {
       window.location.toString().split('/').length - 1
     ];
   
-    if (text) {
+    if (content) {
         const response = await fetch('/api/comment', {
           method: 'POST',
           body: JSON.stringify({
@@ -26,4 +26,4 @@ const addReview = async (event) => {
       }
   }
   
-  document.querySelector('.comment-form').addEventListener('submit', addReview);
+  document.querySelector('.comment-form').addEventListener('submit', addComment);

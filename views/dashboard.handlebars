@@ -1,18 +1,11 @@
-{{!-- 
-Shows all of the blogs that have been written by the logged in user
-Button to add a new blog
-
- --}}
-
-
 <div class="container">
     <h1>Welcome to your blogs {{username}}</h1>
     <ul class="container animate__animated animate__fadeInUp" id="blogs">
         {{#if blogs.length}}
         <h2>Your Blogs:</h2>
         {{#each blogs as |blog|}}
-        <div class="Blog">
-            <h2 class='fas fa-code-branch'><a href="/blog/${blog.id}"> ${blog.title}</h2></a>
+        <div class="blog mb-2">
+            <h2 class='fas fa-code-branch'><a href="/blog/{{blog.id}}"> {{blog.title}}</h2></a>
         </div>
         {{/each}}
         {{else}}
@@ -22,10 +15,10 @@ Button to add a new blog
         {{/if}}
     </ul>
 
-    <div class="d-flex justify-content-around align-items-center p-3">
-        <p>Post a new blog!</p>
+    <div class="d-flex justify-content-around align-items-center p-3 animate__animated animate__fadeInUp">
+        <p>Post a new blog!--></p>
         <!-- Button to trigger modal -->
-        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#blogModal">Add Blog</button>                
+        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#blogModal">Add Blog</button>                
         <!-- Modal -->
         <div class="modal fade" id="blogModal" tabindex="-1" role="dialog" aria-labelledby="blogModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -43,7 +36,7 @@ Button to add a new blog
                                 <input type="text" name="blog-title" id="blog-title" placeholder="Blog Title" class="m-2">
                             </div>
                             <div>
-                                <textarea name="blog-text" id="blog-content" placeholder="Blog Content" class="m-2">
+                                <textarea name="blog-text" id="blog-content" placeholder="Blog Content" class="m-2"></textarea>
                             </div> 
                             </div>
                             <div class="modal-footer">

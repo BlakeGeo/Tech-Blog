@@ -1,5 +1,4 @@
 const { Model, DataTypes } = require('sequelize');
-const { User } = require('.');
 const sequelize = require('../config/connection');
 
 class Blog extends Model {}
@@ -31,8 +30,8 @@ Blog.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: User,
-        key: id,
+        model: 'user',
+        key: 'id',
       },
     },
   },
